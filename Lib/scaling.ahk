@@ -43,14 +43,23 @@ class DbdWindowOps {
  * Wrapper around default operations so we can DI fakes for testing.
  */
 class WindowOps {
+    /**
+     * Maps window client area coordinates to screen coordinates
+     * @param {Integer} x client coordinate
+     * @param {Integer} y client coordinate
+     * @returns {Array} [x, y] screen coordinates 
+     */
     clientToScreen(x, y) {
-        clientX := 0, clientY := 0
         try {
             WinGetClientPos(&clientX, &clientY, , , dbdWinTitle)
         } catch Error as e {
             logger.warn("WinGetClientPos(" dbdWinTitle ") failed. " e.What)
         }
-        return [clientX + x, clientY + y]
+        if IsSet(clientX) and IsSet(clientY) {
+            return [clientX + x, clientY + y]
+        } else {
+            return [0, 0]
+        }
     }
 
     click(x, y, options := "") {

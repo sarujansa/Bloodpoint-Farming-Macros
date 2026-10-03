@@ -2,6 +2,8 @@
 
 #Include constants.ahk
 #Include ocr.ahk
+#Include logging.ahk
+#Include capture.ahk
 
 /**
  * A shim we can fake for testing.

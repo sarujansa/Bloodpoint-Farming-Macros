@@ -18,6 +18,7 @@ class DbdTestWindow extends DbdWindowOps {
         this._width := Gdip_GetImageWidth(this.pBitmap)
         this._height := Gdip_GetImageHeight(this.pBitmap)
     }
+    isActive() => true
 }
 
 class TestOps extends WindowOps {

@@ -1,6 +1,8 @@
 #Requires AutoHotkey v2.0
 
 #Include constants.ahk
+#Include images.ahk
+#Include Gdip_All.ahk
 
 capture := WindowCapture()
 
