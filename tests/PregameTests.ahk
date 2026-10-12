@@ -34,7 +34,7 @@ class PregameTests {
         forAllInPath(A_ScriptDir "\screenshots\pregame\playButtonKiller\*", () => assertReadyState(expected))
     }
 
-        test_playButtonSurv() {
+    test_playButtonSurv() {
         expected := [ReadyState.Present, ReadyState.Absent, ReadyState.Absent, ReadyState.Absent, ReadyState.Absent]
         forAllInPath(A_ScriptDir "\screenshots\pregame\playButtonSurv\*", () => assertReadyState(expected))
     }

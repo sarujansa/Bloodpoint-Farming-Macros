@@ -14,9 +14,18 @@ class CoordsBase {
 
     scaledX() => Round(this.x * dbdWindow.width / this.width)
     scaledY() => Round(this.y * dbdWindow.height / this.height)
+
     toString() => "(" this.x ", " this.y ")"
+
     copy(x := this.x, y := this.y, width := this.width, height := this.height) =>
-      CoordsBase(x, y, width, height)
+        CoordsBase(x, y, width, height)
+
+    scaleTo(newWidth, newHeight) => CoordsBase(
+        Round(this.x * newWidth / this.width),
+        Round(this.y * newHeight / this.height),
+        newWidth,
+        newHeight
+    )
 }
 
 /**

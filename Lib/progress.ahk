@@ -11,6 +11,8 @@ getBoundingRect(points) {
     xMax := 0
     yMax := 0
     for point in points {
+        if point.height != 1440
+            point := point.scaleTo(2560, 1440)
         xMin := Min(xMin, point.x)
         yMin := Min(yMin, point.y)
         xMax := Max(xMax, point.x)

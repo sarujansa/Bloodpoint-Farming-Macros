@@ -26,13 +26,11 @@ class ReadyState {
             return Abs(hsv.hue - 30) < 10 && hsv.sat < 30 && hsv.value > 0 && hsv.value < 0xFF
         }
 
-        ; Tick mark locations
-        static yshift := 13 ; patch 10.1.2
-        static s1 := Coords2K(2365, 1284 + yshift)
-        static s2 := Coords2K(2350, 1284 + yshift)
-        static s3 := Coords2K(2336, 1284 + yshift)
-        static s4 := Coords2K(2321, 1284 + yshift)
-        static killer := Coords2K(2305, 1288 + yshift)
+        static s1 := ReadyState.relCoords2K(2365, 1284)
+        static s2 := ReadyState.relCoords2K(2350, 1284)
+        static s3 := ReadyState.relCoords2K(2336, 1284)
+        static s4 := CoordsBase(582, 322, 640, 360).scaleTo(2560, 1440)
+        static killer := CoordsBase(579, 324, 640, 360).scaleTo(2560, 1440)
         static tickMarkers := [s1, s2, s3, s4, killer]
         static bounds := getBoundingRect(tickMarkers)
 
@@ -46,7 +44,7 @@ class ReadyState {
         if height = 0
             return false ; yes, div by 0 happened when resizing the window
         newY := Ceil((Ceil(br.y * height / br.height) + 1) * br.height / height)
-        points := [bounds[1], br.copy(, newY)]        
+        points := [bounds[1], br.copy(, newY)]
         ss := Subscreenshot.ofPoints(points)
 
         ; sw := Stopwatch("ReadyState.getState()")
@@ -54,6 +52,7 @@ class ReadyState {
             states := [0, 0, 0, 0, 0]
             presentColor := 0
             for marker in tickMarkers {
+                logger.trace(A_Index)
                 cUp := ss.getColor(marker)
 
                 ; Does the color below exactly match?
@@ -87,4 +86,13 @@ class ReadyState {
             ; sw.report()
         }
     }
+
+    /**
+     * Translates the coords to keep up with patch changes.
+     * 
+     * @param {Integer} x 
+     * @param {Integer} y 
+     * @returns {Coords2K} 
+     */
+    static relCoords2K(x, y) => Coords2K(x + 8, y + 7)
 }
