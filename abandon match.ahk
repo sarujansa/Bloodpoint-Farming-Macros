@@ -8,6 +8,7 @@ Requirements:
 */
 #HotIf WinActive(dbdWinTitle)
 #Include Lib/common.ahk
+#Include Lib/abandon.ahk
 
 setTrayIcon("icons/esc.ico")
 

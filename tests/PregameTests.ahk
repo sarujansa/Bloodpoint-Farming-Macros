@@ -40,17 +40,6 @@ class PregameTests {
     }
 }
 
-forAllInPath(path, predicate) {
-    empty := true
-    loop files path {
-        empty := false
-        logger.info(A_LoopFileFullPath)
-        assertForScreenshot(A_LoopFileFullPath, predicate)
-    }
-    assert( not empty, "No files found in " path)
-    return true
-}
-
 assertReadyState(expected) {
     rs := ReadyState.getState()
     for e in expected {

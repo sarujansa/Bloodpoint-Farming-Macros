@@ -1,5 +1,6 @@
 #Requires AutoHotkey v2+
-#Include ..\Lib\common.ahk
+#Include coords.ahk
+#Include colors.ahk
 
 /**
  * Defines a capture region from a set of points

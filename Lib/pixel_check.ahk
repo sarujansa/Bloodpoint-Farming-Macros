@@ -1,5 +1,4 @@
 #Requires AutoHotkey v2.0
-#Include ..\Lib\common.ahk
 
 /**
  * Combinator for checking a condition of some pixel.

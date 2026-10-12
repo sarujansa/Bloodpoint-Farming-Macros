@@ -1,7 +1,9 @@
 #Requires AutoHotkey v2.0
-#Include common.ahk
+
+#Include coords.ahk
 #Include gdip.ahk
 #Include ocr_shim.ahk
+#Include subscreenshot.ahk
 
 /**
  * Scales the coords to the current window size and captures a screenshot.
