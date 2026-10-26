@@ -64,10 +64,7 @@ clickWord(word) {
     y := Integer(word.opts.y + rect.y + rect.h / 4) ; aim towards top for upwards moving text
     logger.debug("Clicking " x ", " y)
 
-    moveAndClick() {
-        Click(x, y, "Down")
-        Sleep(50)
-        Click(x, y, "Up")
-    }
-    withMouseBlocked(moveAndClick)
+    ops.click(x, y, "Down")
+    Sleep(50)
+    ops.click(x, y, "Up")
 }
